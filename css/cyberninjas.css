@@ -1,0 +1,105 @@
+/* ITIS 3135 Assignment 2 - Alejandro Raygoza */
+
+body {
+  font-family: sans-serif;
+  color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: mintcream;
+  margin: 0;
+}
+
+ul{
+  list-style: none;
+}
+
+li {
+  padding-right: 10px;
+  display: inline;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* The navigation bar */
+.navbar {
+  margin-left: auto; 
+  margin-right: auto;
+  overflow: hidden;
+  background-color: grey;
+  text-align: center;
+  top: 2;
+  width: 50%; 
+}
+
+/* Links inside the navbar */
+.navbar a {
+  justify-content: center;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition-duration: 0.6s;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.active, .dot:hover {
+  background-color: lightgrey;
+}
+
+.center {
+  max-width: 75%;
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+#centerFooter{
+  text-align:center;
+  max-width: 80%;
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+
+/* Images styling */
+
+img {
+  max-width: 100%;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  text-align: center;
+}
+
+#img-slide {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, p{
+  text-align: center;
+}
+
+.team {
+  margin-left: auto; 
+  margin-right: auto;
+  overflow: hidden;
+  background-color: darkgrey;
+  color:  black;
+  text-align: center;
+  top: 2;
+  width: 60%; 
+}
+
+/* contact us form */
+form {
+  text-align:center;
+  max-width: 80%;
+  margin-left: auto; 
+  margin-right: auto;
+}
