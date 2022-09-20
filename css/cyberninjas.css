@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ITIS 3135 Assignment 2 - Alejandro Raygoza */
 
 body {
@@ -55,6 +56,111 @@ a{
   background-color: lightgrey;
 }
 
+=======
+/* ITIS 3135 Assignment 2 - Alejandro Raygoza and Donovan Brite */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+nav{
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  line-height: 70px;
+  padding:0px 100px;
+}
+
+nav .teamlogo{
+   font-size: 30px;
+   font-weight: bold;
+}
+
+nav .teamlogo p{
+  float: left;
+  color: white;
+}
+
+nav ul{
+  float: right;
+}
+
+nav ul li a{
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 0px 10px;
+}
+
+nav ul li .active{
+  color: mediumaquamarine;
+}
+
+nav ul li a:hover{
+  color: mediumaquamarine;
+}
+
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+footer{
+  background: black;
+  width:100%;
+  height: auto;
+  color: white;
+  font-family:'Poppins', sans-serif;
+  bottom: 0;
+  position: absolute;
+
+}
+
+.design p{
+  text-align: center;
+  font-size: 12px;
+}
+
+.design h3 a{
+  text-align: right;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.design h3 a:hover{
+  color: mediumaquamarine;
+}
+
+.copyright{
+  background: mediumaquamarine;
+  color: black;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 12px;
+}
+
+.sky video{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Change background on mouse-over */
+
+>>>>>>> 3df2bf9... Redesigned the webpage
 .center {
   max-width: 75%;
   margin-left: auto; 
