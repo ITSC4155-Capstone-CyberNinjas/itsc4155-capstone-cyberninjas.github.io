@@ -1,0 +1,174 @@
+/* ITIS 3135 Assignment 2 - Alejandro Raygoza and Donovan Brite */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+nav{
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  line-height: 70px;
+  padding:0px 100px;
+}
+
+nav .teamlogo{
+   font-size: 30px;
+   font-weight: bold;
+}
+
+nav .teamlogo p{
+  float: left;
+  color: white;
+}
+
+nav ul{
+  float: right;
+}
+
+nav ul li a{
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 0px 10px;
+}
+
+nav ul li .active{
+  color: mediumaquamarine;
+}
+
+nav ul li a:hover{
+  color: mediumaquamarine;
+}
+
+nav ul li{
+  display: inline-block;
+  list-style: none;
+}
+
+footer{
+  background: black;
+  width:100%;
+  height: auto;
+  color: white;
+  font-family:'Poppins', sans-serif;
+  bottom: 0;
+  position: absolute;
+
+}
+
+.design p{
+  text-align: center;
+  font-size: 12px;
+}
+
+.design h3 a{
+  text-align: right;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.design h3 a:hover{
+  color: mediumaquamarine;
+}
+
+.copyright{
+  background: mediumaquamarine;
+  color: black;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 12px;
+}
+
+.sky video{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Change background on mouse-over */
+
+.center {
+  max-width: 75%;
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+#centerFooter{
+  text-align:center;
+  max-width: 80%;
+  margin-left: auto; 
+  margin-right: auto;
+}
+html,
+body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 180px;
+  /* must be same height as the footer */
+}
+
+#footer {
+  position: relative;
+  margin-top: -100px;
+  /* negative value of footer height */
+  height: 100px;
+  clear: both;
+  background-color: black;
+}
+
+
+/* Images styling */
+
+img {
+  max-width: 100%;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  text-align: center;
+}
+
+#img-slide {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, p{
+  text-align: center;
+}
+
+.team {
+  margin-left: auto; 
+  margin-right: auto;
+  overflow: hidden;
+  background-color: darkgrey;
+  color:  black;
+  text-align: center;
+  top: 2;
+  width: 60%; 
+}
+
+/* contact us form */
+form {
+  text-align:center;
+  max-width: 80%;
+  margin-left: auto; 
+  margin-right: auto;
+}
