@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_21663d4a6d8ac93333e6d856f1b59e29 {
+                #map_c2ffe124fa3fbb99c521a8b379eb80f9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -36,13 +36,13 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_21663d4a6d8ac93333e6d856f1b59e29" ></div>
+            <div class="folium-map" id="map_c2ffe124fa3fbb99c521a8b379eb80f9" ></div>
         
 </body>
 <script>    
     
-            var map_21663d4a6d8ac93333e6d856f1b59e29 = L.map(
-                "map_21663d4a6d8ac93333e6d856f1b59e29",
+            var map_c2ffe124fa3fbb99c521a8b379eb80f9 = L.map(
+                "map_c2ffe124fa3fbb99c521a8b379eb80f9",
                 {
                     center: [35.30742034864125, -80.73590951022354],
                     crs: L.CRS.EPSG3857,
@@ -56,15 +56,435 @@
 
         
     
-            var tile_layer_c55a2d82d68f195b3630d5fddfb2ec59 = L.tileLayer(
+            var tile_layer_681ad695ec8cac9bbee5b0c7732fb9fd = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_21663d4a6d8ac93333e6d856f1b59e29);
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
         
     
-            var heat_map_56195b36fda8375cbc57ea6d9aa2e65d = L.heatLayer(
-                [[35.307515862770785, -80.73571705830427], [35.31267640715162, -80.74200998338922], [35.30550548981937, -80.72873019682216], [35.30589304115362, -80.73214474067815], [35.3077865349813, -80.73119368119363], [35.31052012671641, -80.72956218797971]],
+            var heat_map_5e72d795f9152d02d56c92e5470d1e95 = L.heatLayer(
+                [[35.30589304115362, -80.73214474067815, 0.7], [35.30630234706238, -80.7344093006642, 0.9], [35.305400523040255, -80.73552509953846, 1], [35.31267640715162, -80.74200998338922, 0.7], [35.307534535678194, -80.73236613083795, 0.9], [35.3077865349813, -80.73119368119363, 1], [35.30550548981937, -80.72873019682216, 0.7], [35.30741563950016, -80.73335442877301, 0.9], [35.30460541601236, -80.73173933083798, 1], [35.30546443648395, -80.72984370200263, 0.7], [35.311936203433405, -80.74128874194673, 0.9], [35.30910488607636, -80.7434065042412, 1], [35.309025939422504, -80.74162792370868, 0.7], [35.30605569666243, -80.72906331158887, 0.9], [35.306300543492895, -80.72992922150952, 1], [35.3049591469742, -80.72973315838593, 0.7], [35.31131404665103, -80.74198147619241, 0.9], [35.303894812664105, -80.72879863677528, 1], [35.312289175288136, -80.7407199673467, 0.7], [35.30569919531408, -80.73041129093589, 0.9], [35.307108128109746, -80.73001691547567, 1], [35.30776970361139, -80.7296816258644, 0.7], [35.312633472097744, -80.74026908543213, 0.9], [35.31164386878899, -80.74298120264842, 1], [35.303453157479574, -80.72993034023219, 0.7], [35.30461111317007, -80.73077113083795, 0.9], [35.308383668762346, -80.73014622006914, 1], [35.306891540723925, -80.73157816033924, 0.7], [35.304630385739735, -80.7291291992021, 0.9], [35.30513675406152, -80.73041915648714, 1], [35.307515862770785, -80.73571705830427, 0.7]],
                 {"blur": 15, "maxZoom": 18, "minOpacity": 0.5, "radius": 25}
-            ).addTo(map_21663d4a6d8ac93333e6d856f1b59e29);
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            var marker_456018dad3deee825089922a4e3209a7 = L.marker(
+                [35.30589304115362, -80.73214474067815],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_456018dad3deee825089922a4e3209a7.bindTooltip(
+                `<div>
+                     Atkins
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ca168567561272e435ce0318259610c6 = L.marker(
+                [35.30630234706238, -80.7344093006642],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_ca168567561272e435ce0318259610c6.bindTooltip(
+                `<div>
+                     Barnard
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7f790d4682847ffe7bef4bdea19086f3 = L.marker(
+                [35.305400523040255, -80.73552509953846],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_7f790d4682847ffe7bef4bdea19086f3.bindTooltip(
+                `<div>
+                     Belk Gymnasium
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a958c2e30e6f65c02e6a7310d6789b73 = L.marker(
+                [35.31267640715162, -80.74200998338922],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_a958c2e30e6f65c02e6a7310d6789b73.bindTooltip(
+                `<div>
+                     Bioinformatics
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bab9c36ed0948b94ff4f42e104deb4fd = L.marker(
+                [35.307534535678194, -80.73236613083795],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_bab9c36ed0948b94ff4f42e104deb4fd.bindTooltip(
+                `<div>
+                     Burson
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fd97df83278bc91954e8bcbbb9f2b9ea = L.marker(
+                [35.3077865349813, -80.73119368119363],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_fd97df83278bc91954e8bcbbb9f2b9ea.bindTooltip(
+                `<div>
+                     Cameron Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e6063e4c15d6cd4777a4ccc33f8fbb1 = L.marker(
+                [35.30550548981937, -80.72873019682216],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_8e6063e4c15d6cd4777a4ccc33f8fbb1.bindTooltip(
+                `<div>
+                     College of Health and Human Services
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_522e1e4c9dd4a352fe98239256fd88fa = L.marker(
+                [35.30460541601236, -80.73173933083798],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_522e1e4c9dd4a352fe98239256fd88fa.bindTooltip(
+                `<div>
+                     Colvard
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_39aa94e6a638cc155543c505b1ef6347 = L.marker(
+                [35.30546443648395, -80.72984370200263],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_39aa94e6a638cc155543c505b1ef6347.bindTooltip(
+                `<div>
+                     Denny
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_41a9c41bf6d41632da863d9ebd95147a = L.marker(
+                [35.311936203433405, -80.74128874194673],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_41a9c41bf6d41632da863d9ebd95147a.bindTooltip(
+                `<div>
+                     Duke Centennial Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_404c09d9f8d999f6f0bb3321dc829011 = L.marker(
+                [35.30910488607636, -80.7434065042412],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_404c09d9f8d999f6f0bb3321dc829011.bindTooltip(
+                `<div>
+                     Early College Highschool
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ad4c5624a63f48e7bc758553e7ce27c = L.marker(
+                [35.309025939422504, -80.74162792370868],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_5ad4c5624a63f48e7bc758553e7ce27c.bindTooltip(
+                `<div>
+                     Epic
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc490466a19a47add3e4bb421203fe52 = L.marker(
+                [35.30605569666243, -80.72906331158887],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_bc490466a19a47add3e4bb421203fe52.bindTooltip(
+                `<div>
+                     Fretwell
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_60c2fd688efa6c24ec747377ada0ad9e = L.marker(
+                [35.306300543492895, -80.72992922150952],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_60c2fd688efa6c24ec747377ada0ad9e.bindTooltip(
+                `<div>
+                     Friday
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5200440e24a5ada7efacbb9d34685df7 = L.marker(
+                [35.3049591469742, -80.72973315838593],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_5200440e24a5ada7efacbb9d34685df7.bindTooltip(
+                `<div>
+                     Garinger
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_220781b421583e651d48b70861f98118 = L.marker(
+                [35.31131404665103, -80.74198147619241],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_220781b421583e651d48b70861f98118.bindTooltip(
+                `<div>
+                     Grigg
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_479cb040b79541630ada385fc3a0b3eb = L.marker(
+                [35.303894812664105, -80.72879863677528],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_479cb040b79541630ada385fc3a0b3eb.bindTooltip(
+                `<div>
+                     Johnson Band Center
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_88ed60280cef34209cb648802eb736c4 = L.marker(
+                [35.312289175288136, -80.7407199673467],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_88ed60280cef34209cb648802eb736c4.bindTooltip(
+                `<div>
+                     Kulwicki Motorsports Laboratory
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_68a78e40dceed06c9dcb4de07d187538 = L.marker(
+                [35.30569919531408, -80.73041129093589],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_68a78e40dceed06c9dcb4de07d187538.bindTooltip(
+                `<div>
+                     Macy
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a43f158897cbfbea45ea97ecd4473c50 = L.marker(
+                [35.307108128109746, -80.73001691547567],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_a43f158897cbfbea45ea97ecd4473c50.bindTooltip(
+                `<div>
+                     McEniry
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df34ae1c004947a9865b165f9f7db411 = L.marker(
+                [35.30776970361139, -80.7296816258644],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_df34ae1c004947a9865b165f9f7db411.bindTooltip(
+                `<div>
+                     McMillan Greenhouse
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e5ff20b02c1b38b1a5e1a8fa4d6d5bd3 = L.marker(
+                [35.312633472097744, -80.74026908543213],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_e5ff20b02c1b38b1a5e1a8fa4d6d5bd3.bindTooltip(
+                `<div>
+                     Motorsport Research
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f05c45540254a4d841df10f798f438ce = L.marker(
+                [35.31164386878899, -80.74298120264842],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_f05c45540254a4d841df10f798f438ce.bindTooltip(
+                `<div>
+                     Portal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_155701de942d9c87a34954cf89a837ea = L.marker(
+                [35.303453157479574, -80.72993034023219],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_155701de942d9c87a34954cf89a837ea.bindTooltip(
+                `<div>
+                     Robinson Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1672a9fbc1f9f7b06d2bc5b4f61a5210 = L.marker(
+                [35.30461111317007, -80.73077113083795],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_1672a9fbc1f9f7b06d2bc5b4f61a5210.bindTooltip(
+                `<div>
+                     Rowe
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ece57c809ea1337f97cc2978b1f78a0 = L.marker(
+                [35.308383668762346, -80.73014622006914],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_0ece57c809ea1337f97cc2978b1f78a0.bindTooltip(
+                `<div>
+                     Science Building
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_02031cdab696686ec06293cc5f3171d3 = L.marker(
+                [35.306891540723925, -80.73157816033924],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_02031cdab696686ec06293cc5f3171d3.bindTooltip(
+                `<div>
+                     Smith
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c01ed8f027db67a68d37c39122613e2a = L.marker(
+                [35.304630385739735, -80.7291291992021],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_c01ed8f027db67a68d37c39122613e2a.bindTooltip(
+                `<div>
+                     Storrs
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c725c19530b1f83ee5dff3635a16754d = L.marker(
+                [35.30513675406152, -80.73041915648714],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_c725c19530b1f83ee5dff3635a16754d.bindTooltip(
+                `<div>
+                     Winningham
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c756d5fff0de1876173ef9d6dd6e6b0a = L.marker(
+                [35.307515862770785, -80.73571705830427],
+                {}
+            ).addTo(map_c2ffe124fa3fbb99c521a8b379eb80f9);
+        
+    
+            marker_c756d5fff0de1876173ef9d6dd6e6b0a.bindTooltip(
+                `<div>
+                     Woodward Hall
+                 </div>`,
+                {"sticky": true}
+            );
         
 </script>

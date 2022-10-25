@@ -98,6 +98,10 @@ footer{
   object-fit: cover;
 }
 
+video {
+  filter: brightness(70%);
+}
+
 /* Change background on mouse-over */
 
 .center {
