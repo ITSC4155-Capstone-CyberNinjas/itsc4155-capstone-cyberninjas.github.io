@@ -88,7 +88,7 @@ folium.Marker(
    [35.30815951601069, -80.73284919823239], tooltip="Student Union East"
 ).add_to(map)
 
-map.save("foliumTransport.html")
+map.save("foliumTransportGreen.html")
 
 # Green Route Bus Stop Names
 

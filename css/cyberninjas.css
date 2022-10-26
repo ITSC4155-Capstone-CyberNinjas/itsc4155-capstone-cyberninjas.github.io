@@ -105,6 +105,13 @@ video{
   z-index: -1;
 }
 
+/* index page UNC Charlotte logo */
+#charlotteLogo {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 2%;
+  z-index: 1;
+}
+
 /* Change background on mouse-over */
 .center {
   max-width: 75%;

@@ -33,18 +33,27 @@
 
 <main>
 	<div class="center">
-		<p>Transportation Information Page</p>
+		<h1>Transportation Information Page</h1>
 		<br>	
-	<div>
+		<p>Please Select date then choose desired transportation route</p>
+		<p>then click the go to map button</p>
+		<br>
+		<p>
+			<br><br>
+			<!--
+			<button type="button"  onclick="window.location.href = 'placeholder.html'">Daily</button>
+			<button type="button"  onclick="window.location.href = 'placeholder.html'">Weekly</button>
+			<button type="button"  onclick="window.location.href = 'placeholder.html'">Monthly</button>
+			-->
+			<p><strong>Select Date:</strong></p>
+			<p><input id="selectedDate" type="date" name="date_picker" value="2019-08-01" required></p>
+		</p>
 		<br><br><br>
 		<p>
-			Please select a transportation route
-			<br><br>
-		</p>
-		<p>
-			<button type="button"  onclick="window.location.href ='transportationMap.html'">Green route</button>
+			<button type="button"  onclick="window.location.href ='greenRouteMap.html'">Green route</button>
 			<button type="button"  onclick="window.location.href ='silverRouteMap.html'">Silver route</button>
 		</p>
+	</div>
 </main>
 
 <footer>
