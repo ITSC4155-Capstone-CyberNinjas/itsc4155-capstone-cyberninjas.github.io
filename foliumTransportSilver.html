@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a9b2dba0501de5767b868a1526ebb82d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_a9b2dba0501de5767b868a1526ebb82d" ></div>
+        
+</body>
+<script>    
+    
+            var map_a9b2dba0501de5767b868a1526ebb82d = L.map(
+                "map_a9b2dba0501de5767b868a1526ebb82d",
+                {
+                    center: [35.30794215338082, -80.73511035782593],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_26cbc91a542caad0eb98fb5210ca8c0e = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            var heat_map_5f1e5a834278d6742797fc881ef98b5b = L.heatLayer(
+                [[35.307469363314084, -80.74017436838038, 0.7], [35.307600694176486, -80.73999197817976, 0.9], [35.30806472816382, -80.73034675466805, 1], [35.309194158319045, -80.7443908006883, 0.7], [35.31238974733628, -80.74162276121262, 0.9], [35.30627862039809, -80.72702081550266, 1], [35.30935175199663, -80.74119360779945, 0.7], [35.31018349117011, -80.74196608394318, 0.9], [35.30735591268372, -80.72929544799972, 1], [35.31104148682978, -80.74147255751802, 0.7], [35.30723296719705, -80.72529347294817, 0.9], [35.30870386497582, -80.72511108274757, 1], [35.31040236845253, -80.72705300200938, 0.7], [35.312792470141545, -80.74091465808088, 0.9], [35.31122534185856, -80.74297459446416, 1], [35.308196058059686, -80.73031456816206, 0.7], [35.31042863370326, -80.72913439624001, 0.9], [35.3080472174944, -80.73279292927869, 1], [35.30823983464373, -80.73268564092538, 1]],
+                {"blur": 15, "maxZoom": 18, "minOpacity": 0.5, "radius": 25}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            var marker_ba87dc2c93a28c3988273863660c4dfe = L.marker(
+                [35.307469363314084, -80.74017436838038],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_ba87dc2c93a28c3988273863660c4dfe.bindTooltip(
+                `<div>
+                     Athletics Complex East
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0eef872d6dd5a8f3de862578a2642b55 = L.marker(
+                [35.307600694176486, -80.73999197817976],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_0eef872d6dd5a8f3de862578a2642b55.bindTooltip(
+                `<div>
+                     Athletics Complex West
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b531a458d3ae56bd6a8383c35817096 = L.marker(
+                [35.30806472816382, -80.73034675466805],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_8b531a458d3ae56bd6a8383c35817096.bindTooltip(
+                `<div>
+                     Auxiliary Services
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_932899128bd45c978c903451ccf7c242 = L.marker(
+                [35.309194158319045, -80.7443908006883],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_932899128bd45c978c903451ccf7c242.bindTooltip(
+                `<div>
+                     CRI Deck
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_075a46900119f0a5787ab41050b9779b = L.marker(
+                [35.31238974733628, -80.74162276121262],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_075a46900119f0a5787ab41050b9779b.bindTooltip(
+                `<div>
+                     Duke Centennial Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3baa0cdd7e9e84ef47d60cd9c4c1f68b = L.marker(
+                [35.30627862039809, -80.72702081550266],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_3baa0cdd7e9e84ef47d60cd9c4c1f68b.bindTooltip(
+                `<div>
+                     East Deck 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_615dd5ff3b7f396b14468e03e5c1c285 = L.marker(
+                [35.30935175199663, -80.74119360779945],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_615dd5ff3b7f396b14468e03e5c1c285.bindTooltip(
+                `<div>
+                     EPIC North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7fed6a92d1034f20eaf32a79146b1bff = L.marker(
+                [35.31018349117011, -80.74196608394318],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_7fed6a92d1034f20eaf32a79146b1bff.bindTooltip(
+                `<div>
+                     Epic South
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d39308f8a62e084b6f6eba59988fbebe = L.marker(
+                [35.30735591268372, -80.72929544799972],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_d39308f8a62e084b6f6eba59988fbebe.bindTooltip(
+                `<div>
+                     Fretwell North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_96f4dff6c90f9a29061c8194e3d6757e = L.marker(
+                [35.31104148682978, -80.74147255751802],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_96f4dff6c90f9a29061c8194e3d6757e.bindTooltip(
+                `<div>
+                     Grigg Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e3ca1edaa811827f8191c98ff42ba387 = L.marker(
+                [35.30723296719705, -80.72529347294817],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_e3ca1edaa811827f8191c98ff42ba387.bindTooltip(
+                `<div>
+                     Lot 5A
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_473eebe90cabf60e83846e5bdd7c4bae = L.marker(
+                [35.30870386497582, -80.72511108274757],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_473eebe90cabf60e83846e5bdd7c4bae.bindTooltip(
+                `<div>
+                     Lot 6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e2b2dcc59f5cd2c655b5f52b63868ec = L.marker(
+                [35.31040236845253, -80.72705300200938],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_9e2b2dcc59f5cd2c655b5f52b63868ec.bindTooltip(
+                `<div>
+                     Martin Hall
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c9a7568dc7e185cb7242bef4c8a7e71d = L.marker(
+                [35.312792470141545, -80.74091465808088],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_c9a7568dc7e185cb7242bef4c8a7e71d.bindTooltip(
+                `<div>
+                     Motorsports
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a1d86be33952e12762eb0d0cc586ece1 = L.marker(
+                [35.31122534185856, -80.74297459446416],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_a1d86be33952e12762eb0d0cc586ece1.bindTooltip(
+                `<div>
+                     Portal West
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_baedc5e7d61f505e90fffb8631c8489c = L.marker(
+                [35.308196058059686, -80.73031456816206],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_baedc5e7d61f505e90fffb8631c8489c.bindTooltip(
+                `<div>
+                     Science Building
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b230c6eed0016955290929eed37b5f94 = L.marker(
+                [35.31042863370326, -80.72913439624001],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_b230c6eed0016955290929eed37b5f94.bindTooltip(
+                `<div>
+                     Student Health North
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0b05bd39b32f6448953d24f0547a30cb = L.marker(
+                [35.3080472174944, -80.73279292927869],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_0b05bd39b32f6448953d24f0547a30cb.bindTooltip(
+                `<div>
+                     Student Union East
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b6c988ba0cc0bc11cbeb5e1a3e8a7223 = L.marker(
+                [35.30823983464373, -80.73268564092538],
+                {}
+            ).addTo(map_a9b2dba0501de5767b868a1526ebb82d);
+        
+    
+            marker_b6c988ba0cc0bc11cbeb5e1a3e8a7223.bindTooltip(
+                `<div>
+                     Student Union West
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

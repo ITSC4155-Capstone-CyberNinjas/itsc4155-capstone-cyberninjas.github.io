@@ -28,7 +28,7 @@ data = [
    [35.303707950761805, -80.72943481577379, crowded], # Robinson Hall South
    [35.30109818790611, -80.73583197907419, less], # South Village Deck
    [35.31061038910347, -80.72923779212933, moderate], # Student Health North
-   [35.30815951601069, -80.73284919823239, crowded], # Student Union East
+   [35.30815951601069, -80.73284919823239, crowded] # Student Union East
 ]
 
 HeatMap(data).add_to(map)
