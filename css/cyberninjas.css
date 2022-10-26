@@ -108,8 +108,9 @@ video{
 /* index page UNC Charlotte logo */
 #charlotteLogo {
   background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 2%;
-  z-index: 1;
+  border-radius: 3%;
+  z-index: 2;
+  width: 600px;
 }
 
 /* Change background on mouse-over */
@@ -128,7 +129,6 @@ video{
 
 
 /* Images styling */
-
 img {
   max-width: 100%;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
