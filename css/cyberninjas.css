@@ -107,7 +107,6 @@ video{
 
 /* index page UNC Charlotte logo */
 #charlotteLogo {
-  margin-top: 10%;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 3%;
   z-index: 2;
@@ -172,9 +171,50 @@ form {
 .facebook2{
   color: white;
   text-decoration: none;
+  position: relative;
+  right: 200px;
+  top: 650px;
 }
 
 button {
   padding-left: 5px;
   padding-right: 5px;
+}
+/* Review Page */
+    
+.rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
+}
+    
+.rating > input{
+  display:none;
+}
+.rating > label {
+  position: static;
+  width: 1.1em;
+  font-size: 5vw;
+  color: #FFD700;
+  cursor: pointer;
+}
+        
+.rating > label::before{
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+        
+.rating > label:hover:before,
+  .rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+  .rating > input:checked ~ label:before{
+  opacity:1;
+}            
+  .rating:hover > input:checked ~ label:before{ 
+  opacity: 0.4;
+}
+.Center-button {
+  text-align: center;
 }
