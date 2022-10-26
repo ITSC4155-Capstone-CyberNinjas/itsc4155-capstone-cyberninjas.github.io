@@ -107,6 +107,7 @@ video{
 
 /* index page UNC Charlotte logo */
 #charlotteLogo {
+  margin-top: 10%;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 3%;
   z-index: 2;
@@ -171,7 +172,7 @@ form {
 .facebook2{
   color: white;
   text-decoration: none;
-  position: relative;
+  position: absolute;
   right: 200px;
   top: 650px;
 }
