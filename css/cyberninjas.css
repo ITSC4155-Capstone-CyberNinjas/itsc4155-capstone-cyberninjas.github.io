@@ -154,5 +154,6 @@ form {
 }
 
 .welcome {
+  color: white;
   z-index: 1;
 }
