@@ -51,7 +51,7 @@ nav ul li .active{
 }
 
 nav ul li a:hover{
-  color: mediumaquamarine;
+  color: #66cdaa;
 }
 
 nav ul li{
@@ -82,7 +82,7 @@ footer{
 }
 
 .design h3 a:hover{
-  color: mediumaquamarine;
+  color: #66cdaa;
 }
 
 .copyright{

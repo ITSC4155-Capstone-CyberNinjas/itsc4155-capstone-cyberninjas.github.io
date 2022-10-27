@@ -9,7 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WIFI Analyzer - Review</title>
 	<link rel="stylesheet" href="css/cyberninjas.css" />
-	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="makeRain.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
@@ -44,9 +45,6 @@
 			<form>
 				<input type="text" id="input-name" placeholder="Your Name"><br>
 				<textarea type="text" id="input-feedback" placeholder="Your Feedback"></textarea><br>
-				<p>
-					<div class="g-recaptcha" data-sitekey="6LdmdLsiAAAAAECdWIZaQXLbbjM3BV6Fs9qO9tyC"></div>
-				</p>
 			</form>
 			<div>
 				<div class="rating">
@@ -62,10 +60,8 @@
 					<!--
 					<BUTTON TYPE="button" ONCLICK="alert('Thanks for submtting your Review!')">Submit</BUTTON>
 					-->
-					<p class="center">
-						
-						<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit'data-action='submit'>Submit</button>
-					</p>
+					<!--I hope you like this Tre -Alejandro-->
+					<button id="makeItRain" onclick="alert('Thanks for submtting your Review!') + makeItRain()">Submit</button></div>
 				</div>
 	</main>
 
@@ -78,13 +74,6 @@
 			<p>Copyright &copy2022 CyberNinjas</p>
 		</div>
 	</footer>
-
-	<script>
-		function onSubmit(token) {
-		  document.getElementById("demo-form").submit();
-		}
-	  </script>
-
 </body>
 
 </html>
