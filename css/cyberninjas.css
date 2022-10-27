@@ -172,6 +172,14 @@ form {
 .facebook2{
   color: white;
   text-decoration: none;
+  position: absolute;
+  bottom: 20%;
+  text-align: center;
+}
+
+#share {
+  position: absolute;
+  z-index: 2;
 }
 
 button {
