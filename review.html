@@ -6,15 +6,17 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WIFI Analyzer - Review</title>
 	<link rel="stylesheet" href="css/cyberninjas.css" />
-	<!-- <script "tbd"></script>  -->
+	<script src="makeRain.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
 	<nav>
 		<div class="teamlogo">
-			<p>CyberNinjas</p>
+			<p><a href="index.html">CyberNinjas</a></p>
 		</div>
 		<ul>
 			<li><a href="index.html">Home</a></li>
@@ -37,12 +39,12 @@
 		<div class="center">
 			<h1>Review Us</h1>
 			<br>
-			<p>Your review and feedback will help us improve our website and make it a better experience for everyone.</p>
+			<p>Your review and feedback will help us improve our website and make it a better experience for everyone.
+			</p>
 			<br>
 			<form>
 				<input type="text" id="input-name" placeholder="Your Name"><br>
 				<textarea type="text" id="input-feedback" placeholder="Your Feedback"></textarea><br>
-
 			</form>
 			<div>
 				<div class="rating">
@@ -55,7 +57,11 @@
 				</div>
 				<div class="Center-button">
 					<br>
+					<!--
 					<BUTTON TYPE="button" ONCLICK="alert('Thanks for submtting your Review!')">Submit</BUTTON>
+					-->
+					<!--I hope you like this Tre -Alejandro-->
+					<button id="makeItRain" onclick="alert('Thanks for submtting your Review!') + makeItRain()">Submit</button></div>
 				</div>
 	</main>
 
