@@ -22,12 +22,12 @@ heat_weight[:5]
 
 for i, r in base_df.iterrows():
     #setting for the popup
-    popup=folium.Popup(r['Name'], max_width=10000)
+    #popup=folium.Popup(r['Name'], max_width=10000)
     tooltip=(r['Name'])
     #Plotting the Marker for each building
     folium.map.Marker(
         location=[r['Latitude'], r['Longitude']], 
-        popup=(r['Name'], r['Count']),
+        popup=(r'Connected devices',r['Count']),
         icon=folium.Icon(color="green", icon="university")
     ).add_to(OurMap)
     
