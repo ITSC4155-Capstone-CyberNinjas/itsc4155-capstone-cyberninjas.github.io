@@ -27,11 +27,9 @@ for i, r in base_df.iterrows():
     #Plotting the Marker for each building
     folium.map.Marker(
         location=[r['Latitude'], r['Longitude']], 
-        popup=(r['Count']),
+        popup=(r['Name'], r['Count']),
         icon=folium.Icon(color="green", icon="university")
     ).add_to(OurMap)
-    
-    #heatmap_df = base_df[['Latitude', 'Longitude', 'Count']]
     
 HeatMap(heat_weight).add_to(OurMap)
 OurMap
