@@ -224,3 +224,9 @@ justify-content: center;
 .Center-button {
   text-align: center;
 }
+
+<style>
+a:link, a:visited {color:gray; background-color:red;}
+a:hover, a:focus {color:black; background-color:white;}
+
+</style>
