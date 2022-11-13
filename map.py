@@ -2,13 +2,11 @@ import folium
 from folium import plugins
 import pandas as pd
 from folium.plugins import HeatMap
-#import matplotlib.pyplot as plt
 import folium.plugins as plugins
 import requests
 import time
 from folium.plugins import HeatMapWithTime
 import datetime
-
 import numpy as np
 
 #base_df=pd.read_csv(r"C:\Users\Administrator\Downloads\Sample Locations.csv")
@@ -25,7 +23,6 @@ heat_weight = list(map(list,zip(base_df["Latitude"],
             )
 heat_weight[:5]
 
-
 for i, r in base_df.iterrows():
     #setting for the popup
     #popup=folium.Popup(r['Name'], max_width=10000)
@@ -34,10 +31,28 @@ for i, r in base_df.iterrows():
     folium.map.Marker(
         location=[r['Latitude'], r['Longitude']], 
         tooltip=tooltip,
-        popup=(r'Connected devices',r['Count']),
+        popup=(r['Count'], r'Devices'),
         icon=folium.Icon(color="green", icon="university")
     ).add_to(OurMap)
     
+#HeatMap(heat_weight).add_to(OurMap)
+#OurMap
+
+time_index = list(base_df['Timestamp'].sort_values().astype('str').unique())
+time_index
+
+base_df['Timestamp'] = base_df['Timestamp'].sort_values(ascending=True)
+data = []
+for _, d in base_df.groupby('Timestamp'):
+    data.append([[row['Latitude'], row['Longitude'], row['Count']] for _, row in d.iterrows()])
+data
+
+HeatMapWithTime(data,
+                index=time_index,
+                auto_play=True,
+                use_local_extrema=True
+               ).add_to(OurMap)
+
 HeatMap(heat_weight).add_to(OurMap)
 OurMap
 OurMap.save("folium.html")
