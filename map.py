@@ -3,10 +3,16 @@ from folium import plugins
 import pandas as pd
 from folium.plugins import HeatMap
 #import matplotlib.pyplot as plt
+import folium.plugins as plugins
+import requests
+import time
+from folium.plugins import HeatMapWithTime
+import datetime
 
 import numpy as np
 
-base_df=pd.read_csv(r"C:\Users\Administrator\Downloads\Sample Locations.csv")
+#base_df=pd.read_csv(r"C:\Users\Administrator\Downloads\Sample Locations.csv")
+base_df=pd.read_csv("SampleLocations.csv")
 base_df.head()
 
 OurMap = folium.Map(location=[35.30742034864125, -80.73590951022354], tiles="OpenStreetMap", zoom_start = 15)
@@ -27,6 +33,7 @@ for i, r in base_df.iterrows():
     #Plotting the Marker for each building
     folium.map.Marker(
         location=[r['Latitude'], r['Longitude']], 
+        tooltip=tooltip,
         popup=(r'Connected devices',r['Count']),
         icon=folium.Icon(color="green", icon="university")
     ).add_to(OurMap)
