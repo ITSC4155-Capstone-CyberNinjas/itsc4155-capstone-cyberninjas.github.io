@@ -10,8 +10,10 @@ from folium.plugins import Search
 base_df = pd.read_csv("SampleLocations.csv")
 base_df.head()
 
+# created map from folium
 OurMap = folium.Map(location=[35.30742034864125, -80.73590951022354], tiles="OpenStreetMap", zoom_start=15, control_scale=True) 
 
+# needed for time lapse
 time_index = list(base_df['Timestamp'].sort_values().astype('str').unique())
 time_index
 
@@ -22,6 +24,7 @@ for _, d in base_df.groupby('Timestamp'):
                 for _, row in d.iterrows()])
 data
 
+# timelapse heat map
 HeatMapWithTime(data,
                 index=time_index,
                 auto_play=False,
@@ -36,6 +39,7 @@ heat_weight = list(map(list, zip(base_df["Latitude"],
                    )
 heat_weight[:5]
 
+# setting up search feature
 geo_json = {
   "type": "FeatureCollection",
   "features": [],
@@ -54,6 +58,7 @@ for d in base_df.iterrows():
     geo_json["features"].append(temp_dict),
 geojson_obj = folium.GeoJson(geo_json).add_to(OurMap)
 
+# for loop to iterate trhoug the data frame and create markers
 for i, r in base_df.iterrows():
     tooltip = (r['Name'])
     folium.Marker(
@@ -63,6 +68,7 @@ for i, r in base_df.iterrows():
         icon=folium.Icon(markerColor="green"),
     ).add_to(OurMap)
 
+# search bar that returns the name of building
 servicesearch = Search(
     layer=geojson_obj,
     search_label="Name",
@@ -71,6 +77,7 @@ servicesearch = Search(
     collapsed=False,
 ).add_to(OurMap)
 
+# adding everything to folium map
 HeatMap(heat_weight).add_to(OurMap)
 OurMap
 OurMap.save("folium.html")
