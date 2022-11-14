@@ -7,7 +7,7 @@ from folium.plugins import HeatMapWithTime
 from folium.plugins import Search
 
 #base_df=pd.read_csv(r"C:\Users\Administrator\Downloads\Sample Locations.csv")
-base_df = pd.read_csv("SampleLocations.csv")
+base_df = pd.read_csv("csv/SampleLocations.csv")
 base_df.head()
 
 # created map from folium
