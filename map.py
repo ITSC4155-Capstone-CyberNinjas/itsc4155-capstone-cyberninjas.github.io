@@ -27,8 +27,10 @@ data
 # timelapse heat map
 HeatMapWithTime(data,
                 index=time_index,
-                auto_play=False,
-                use_local_extrema=True, 
+                auto_play=True,
+                radius=65,
+                position='bottomright',
+                use_local_extrema=True,
                 ).add_to(OurMap)
 
 heat_weight = list(map(list, zip(base_df["Latitude"],
