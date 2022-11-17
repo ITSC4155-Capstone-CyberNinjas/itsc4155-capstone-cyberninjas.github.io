@@ -67,7 +67,7 @@ for i, r in base_df.iterrows():
         location=[r['Latitude'], r['Longitude']],
         tooltip=tooltip,
         popup=(r['Count'], r'Humans On Bus'),
-        icon=folium.Icon(markerColor="lightblue"),
+        icon=folium.Icon(markerColor="green"),
     ).add_to(OurMap)
 
 # search bar that returns the Stop of building
