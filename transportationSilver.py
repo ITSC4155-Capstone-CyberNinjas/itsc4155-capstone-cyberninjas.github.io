@@ -75,6 +75,7 @@ servicesearch = Search(
     layer=geojson_obj,
     search_label="Stop",
     position="topright",
+    search_zoom=17,
     placeholder='Search for a Stop        ',
     collapsed=False,
 ).add_to(OurMap)

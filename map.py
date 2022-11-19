@@ -74,6 +74,7 @@ for i, r in base_df.iterrows():
 servicesearch = Search(
     layer=geojson_obj,
     search_label="Name",
+    search_zoom=17,
     position="topright",
     placeholder='Search for a building        ',
     collapsed=False,
