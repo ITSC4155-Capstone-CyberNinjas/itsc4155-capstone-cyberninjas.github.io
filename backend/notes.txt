@@ -1,0 +1,3 @@
+A nice introductory guide to FastAPI: https://realpython.com/fastapi-python-web-apis/ 
+
+FastAPI docs: https://fastapi.tiangolo.com/ 
