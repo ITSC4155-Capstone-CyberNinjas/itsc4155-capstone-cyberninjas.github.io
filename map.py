@@ -19,6 +19,9 @@ time_index
 
 base_df['Timestamp'] = base_df['Timestamp'].sort_values(ascending=True)
 data = []
+
+# looping over each unique timestamp group
+# appending data to list, 
 for _, d in base_df.groupby('Timestamp'):
     data.append([[row['Latitude'], row['Longitude'], row['Count']]
                 for _, row in d.iterrows()])
@@ -46,6 +49,8 @@ geo_json = {
   "type": "FeatureCollection",
   "features": [],
 }
+
+# create GeoJson object to represent markers for each building
 for d in base_df.iterrows():
     temp_dict = {
       "type": "Feature",
@@ -61,6 +66,8 @@ for d in base_df.iterrows():
 geojson_obj = folium.GeoJson(geo_json).add_to(OurMap)
 
 # for loop to iterate trhoug the data frame and create markers
+
+#does the same thing as the above for loop - redudant
 for i, r in base_df.iterrows():
     tooltip = (r['Name'])
     folium.Marker(
@@ -73,7 +80,7 @@ for i, r in base_df.iterrows():
 # search bar that returns the name of building
 servicesearch = Search(
     layer=geojson_obj,
-    search_label="Name",
+    searchb_label="Name",
     search_zoom=17,
     position="topright",
     placeholder='Search for a building        ',
