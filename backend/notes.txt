@@ -2,3 +2,38 @@ A nice introductory guide to FastAPI: https://realpython.com/fastapi-python-web-
 
 FastAPI docs: https://fastapi.tiangolo.com/ 
 
+Since the map HTML will be rendered per user input. Given multiple users are using
+the website, will all the rendering be done locally? 
+
+- Folium + Flask example https://python-visualization.github.io/folium/flask.html 
+
+- Endpoint functions: "You can return a dict, list, singular values as str, int, etc."
+	- Also can return PyDantic models
+
+- Can declare path parameters like f-strings in the HTTP method decorator
+
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id}
+
+- Automatic data type validation
+
+- Path parameters different from "query" parameters
+	- query parameters are the key-value pairs that go after the '?' in URL 
+
+- datetime datatypes supported: https://fastapi.tiangolo.com/tutorial/extra-data-types/ 
+
+Main functionality needed by the back-end is to return data to map generation script based on user input. This needs to be applicable for both WiFi and Transportation pages. 
+
+Endpoints:
+	- .../wifi/map
+		- 
+	- .../transportation/map 
+
+Could pass date as a *query parameter*  
+	- no body should be needed for these endpoints
+
+- Need to like actually understand this: https://fastapi.tiangolo.com/tutorial/dependencies/ - some insight to what the innerworkings of FastAPI is actually doing. 
+	- Dependencies are great to use when shared logic and shared conenctions may be used over and over. Both of these are relevant to our app
+
+- Db connections: https://fastapi.tiangolo.com/tutorial/sql-databases/ 
