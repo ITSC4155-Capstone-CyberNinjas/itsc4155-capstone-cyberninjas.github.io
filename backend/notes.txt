@@ -36,4 +36,9 @@ Could pass date as a *query parameter*
 - Need to like actually understand this: https://fastapi.tiangolo.com/tutorial/dependencies/ - some insight to what the innerworkings of FastAPI is actually doing. 
 	- Dependencies are great to use when shared logic and shared conenctions may be used over and over. Both of these are relevant to our app
 
-- Db connections: https://fastapi.tiangolo.com/tutorial/sql-databases/ 
+- Db connections: https://fastapi.tiangolo.com/tutorial/sql-databases/
+
+- MySQL in WSL info:
+    - Start server with: sudo /etc/init.d/mysql start  
+    - MS docs: https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database
+    - access MySQL console: sudo mysql -p 
