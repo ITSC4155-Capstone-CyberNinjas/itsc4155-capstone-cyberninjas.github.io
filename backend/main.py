@@ -6,8 +6,8 @@
 """
 
 from datetime import datetime 
-
 from fastapi import FastAPI
+import pandas as pd 
 
 app = FastAPI()
 
@@ -17,8 +17,10 @@ async def root():
     pass
 
 # should these "get" or "post" methods? The end points are 
-@app.post("/wifi/map")
-async def generate_wifi_map(date: datetime): # TODO: Python Datetime supported 
+@app.get("/wifi/map")
+async def generate_wifi_map(date: str): # TODO: Python Datetime supported 
+    df = pd.DataFrame()
+    print('hi')
     return {'date': date}
 
 @app.get("/bus/map")

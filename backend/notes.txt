@@ -42,3 +42,15 @@ Could pass date as a *query parameter*
     - Start server with: sudo /etc/init.d/mysql start  
     - MS docs: https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database
     - access MySQL console: sudo mysql -p 
+    	- password same as system 
+    - start mysql with local infile access: mysql --local-infile -uroot -p
+- Useful commands for getting info about server for conns
+	- show user();
+	- show variables where Variable_name = 'port';
+	- show variabales where Variable_name = 'host';
+
+- if hosting DB from snowflake becomes and issue, could try SQLite which is in memory. May work directly from Heroku. 
+- Heroku no longer has a free tier. Could look into "deta" https://docs.deta.sh/docs/home/#why-is-deta-cloud-free-for-ever 
+
+- more and more I am realizing that database is just a bit too overkill for this project. May look into "deta drive" which can act as local
+file storage. Since we will not be persisting any data, only queries, pandas in-memory may be sufficient. 
