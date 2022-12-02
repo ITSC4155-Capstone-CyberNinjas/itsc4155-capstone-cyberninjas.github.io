@@ -54,3 +54,10 @@ Could pass date as a *query parameter*
 
 - more and more I am realizing that database is just a bit too overkill for this project. May look into "deta drive" which can act as local
 file storage. Since we will not be persisting any data, only queries, pandas in-memory may be sufficient. 
+
+- Template engines: used for generating HTML https://www.fullstackpython.com/template-engines.html 
+
+- Examples:
+    - https://github.com/testdrivenio/fastapi-celery/tree/master/project 
+        - https://testdriven.io/blog/fastapi-and-celery/
+    - 

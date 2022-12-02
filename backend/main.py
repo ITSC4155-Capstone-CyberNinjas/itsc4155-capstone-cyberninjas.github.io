@@ -6,11 +6,12 @@
 """
 
 from datetime import datetime 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI 
 import pandas as pd 
 
 app = FastAPI()
 
+# call data class
 
 @app.get("/")
 async def root():
