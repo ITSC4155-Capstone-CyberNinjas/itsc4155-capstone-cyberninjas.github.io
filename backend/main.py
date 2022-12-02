@@ -13,6 +13,9 @@ app = FastAPI()
 
 # call data class
 
+
+
+
 @app.get("/")
 async def root():
     pass
@@ -20,13 +23,13 @@ async def root():
 # should these "get" or "post" methods? The end points are 
 @app.get("/wifi/map")
 async def generate_wifi_map(date: str): # TODO: Python Datetime supported 
-    df = pd.DataFrame()
-    print('hi')
-    return {'date': date}
+    pass 
+
 
 @app.get("/bus/map")
 async def generate_bus_map():
     pass
+
 
 @app.get("/db")
 async def test_db_query():

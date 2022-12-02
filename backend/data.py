@@ -14,13 +14,13 @@ Will create an object for the data file that will handle reading data and queryi
 '''
 from abc import ABC, abstractmethod
 from pathlib import Path
-from datetime import datetime 
+from datetime import datetime, timedelta
 
 import pandas as pd
 
 
 #defining a Base Class since we have multiple data files 
-class Data(ABC):
+class BaseData(ABC):
 
     @abstractmethod
     def read_data():
@@ -39,7 +39,7 @@ class Data(ABC):
     def format_for_folium():
         ... 
 
-class WiFiData(Data):
+class WiFiData(BaseData):
 
     def __init__():
         self.path = Path("dataset/wifi_counts.csv")
@@ -54,8 +54,25 @@ class WiFiData(Data):
         del df 
 
 
-    def query_data(self, date: datetime):
-        pass
+    def query_data(self, date_str: str):
+        # get dataframe subset for given data parameter 
+
+        def validate_input(q: str):
+            pattern = re.compile(r'^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$') #validate string is in format yyyy-mm-dd
+            result = re.match(pattern, q)
+            if result is None:
+                raise HTTPException(status_code=400, detail = "Invalid string format for date. Should be formatted as yyyy-mm-dd")
+            else:
+                ymd = [int(x) for x in q.split('-')]
+                return datetime(year = ymd[0], month = ymd[1], day = ymd[2])
+        
+
+        date = validate_input(date_str)
+        lower_bound = str(date)[:-9] #remove timestamp for query
+        upper_bound = str(date + timedelta(1))[:-9] #remove timestamp for query
+        query = f"timestamp >= '{lower_bound}' and timestamp < '{upper_bound}'"
+            
+        return df.query(query) 
 
 
     def __call__(self, date: datetime):
