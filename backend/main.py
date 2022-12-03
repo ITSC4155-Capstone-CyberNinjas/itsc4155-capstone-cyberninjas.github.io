@@ -8,11 +8,12 @@
 from datetime import datetime 
 from fastapi import Depends, FastAPI 
 import pandas as pd 
+from . import WiFiData
 
 app = FastAPI()
 
-# call data class
-
+# TODO
+wifi_data = WiFiData() 
 
 
 
@@ -20,9 +21,18 @@ app = FastAPI()
 async def root():
     pass
 
-# should these "get" or "post" methods? The end points are 
+# should these "get" or "post" methods? 
 @app.get("/wifi/map")
-async def generate_wifi_map(date: str): # TODO: Python Datetime supported 
+async def generate_wifi_map(date: str =  Depends(wifi_data)): 
+    '''
+    Dependency Injection will automatically call the "callable" methods of the instance 
+    which will create the subset of data for map and assign to a class variable. 
+    Once the instance is in the path function scope. Another method will be called
+    that will format data for folium and then pass to folium generation script
+
+    Still need to determine how HTML should be returned. Could write locally to file (current set-up)
+    or need to look into returning HTML from HTTP. (TODO) 
+    '''
     pass 
 
 

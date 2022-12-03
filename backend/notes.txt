@@ -57,6 +57,9 @@ file storage. Since we will not be persisting any data, only queries, pandas in-
 
 - Template engines: used for generating HTML https://www.fullstackpython.com/template-engines.html 
 
+- Return HTML
+	- https://stackoverflow.com/questions/65296604/how-to-return-a-htmlresponse-with-fastapi
+
 - Examples:
     - https://github.com/testdrivenio/fastapi-celery/tree/master/project 
         - https://testdriven.io/blog/fastapi-and-celery/
