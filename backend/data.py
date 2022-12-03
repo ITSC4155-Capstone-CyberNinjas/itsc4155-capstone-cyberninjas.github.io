@@ -71,6 +71,12 @@ class WiFiData:
 
     def _format_for_folium( self, subset: pd.DataFrame ):
 
+        if self.queried_df is None:
+            raise HTTPException(
+                status_code = 500,
+                detail = 'No query to format for Folium'
+            )
+
         # index for folium to loop over
         self.timestamp_index = [ str(x) for x in pd.to_datetime(self.queried_df.timestamp) ]
 
@@ -143,8 +149,9 @@ class BuildingData():
 
 
     @classmethod
-    def from_snowflake(cls):
+    def from_snowflake( cls ):
         pass 
+
 
 class DataFactory():
     # TODO: will revisit if this is needed in implementation
