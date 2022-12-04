@@ -19,107 +19,19 @@ import re
 
 import pandas as pd
 from sklearn import preprocessing as p
+from fastapi import HTTPException
 
-
-@dataclass 
-class WiFiData:
-
-    raw_df: pd.DataFrame = None
-    queried_df: pd.DataFrame = None
-    timelapse_structure: List = None # 3D list needed for folium input
-    timestamp_index: List = None # Timestamp index need for folium map timelapse  
-    date_pattern: re.Pattern = re.compile(r'^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$') #verifies string is yyyy-mm-dd format 
-    buildings: BuildingData = BuildingData().from_csv()
-
-
-    @classmethod
-    def from_csv( cls ):
-        df = pd.read_csv( Path('dataset/wifi_counts.csv') )
-        df.timestamp = pd.to_datetime(df.timestamp)
-        return cls( raw_df = df )    
-
-
-    @classmethod
-    def from_snowflake( cls ):
-        pass 
-
-    
-    def get_map( self ):
-        pass 
-
-
-    def _query_data( self, date_str: str ):
-        # get dataframe subset for given date parameter 
-
-        def _validate_input( q: str ):
-            result = re.match( self.date_pattern, q )  # validate string is in format yyyy-mm-dd or yyyy-m-d 
-            if result is None:
-                raise HTTPException( 
-                    status_code = 400, 
-                    detail = "Invalid string format for date. Should be formatted as yyyy-mm-dd" 
-                )
-            else:
-                y_m_d = [ int(x) for x in q.split('-') ]
-                return datetime( year = y_m_d[0], month = y_m_d[1], day = y_m_d[2] )
-         
-
-        date = _validate_input( date_str )
-        query = f"timestamp >= '{date}' and timestamp < '{date + timedelta(1)}'"
-        
-        self.queried_df = self.raw_df.query( query ).copy()
-
-
-    def _format_for_folium( self, subset: pd.DataFrame ):
-
-        if self.queried_df is None:
-            raise HTTPException(
-                status_code = 500,
-                detail = 'No query to format for Folium'
-            )
-
-        # index for folium to loop over
-        self.timestamp_index = [ str(x) for x in pd.to_datetime(self.queried_df.timestamp) ]
-
-        #drop building with nulls from data
-        curr_cols = set( self.queried_df.columns )
-        to_keep = set( self.buildings.buildings_list )
-        to_drop = list( curr_cols.difference(to_keep) )
-        self.queried_df.drop( columns = to_drop, inplace = True )
-
-        # normalize data 
-        min_max_scaler = p.MinMaxScaler()
-        norm_values = min_max_scaler.fit_transform(self.queried_df.values).tolist()
-
-        # create data matrix for map
-        for row in norm_values:
-            new_row = []
-            for idx, col in enumerate( self.queried_df.columns ):
-                curr_coordinate = self.buildings.lat_long_dict[col].copy()
-                curr_coordinate.append( row[idx] )
-                new_row.append( 
-                    curr_coordinate
-                )
-            self.timelapse_structure.append( new_row )
-        
-
-    def __call__( self, date: str ):
-        '''
-            Create call method so FastAPI knows what to do during dependency injection
-            - https://fastapi.tiangolo.com/advanced/advanced-dependencies/ 
-        '''
-        _query_data( date )
-        _format_for_folium( self.queried_df )
-
+import folium_map
 
 
 @dataclass 
 class BuildingData():
     
     raw_df: pd.DataFrame = None 
-    buildings_list: List = None
-    latitudes_list: List = None
-    longitudes_list: List = None
-    lat_long_dict: Dict = None
+    buildings_list: list = None
+    latitudes_list: list = None
+    longitudes_list: list = None
+    lat_long_dict: dict = None
 
 
     @classmethod
@@ -150,7 +62,114 @@ class BuildingData():
 
     @classmethod
     def from_snowflake( cls ):
+        # TODO
         pass 
+
+
+@dataclass 
+class WiFiData:
+
+    raw_df: pd.DataFrame = None
+    queried_df: pd.DataFrame = None
+    timelapse_structure: list = None # 3D list needed for folium input
+    timestamp_index: list = None # Timestamp index need for folium map timelapse  
+    date_pattern: re.Pattern = re.compile(r'^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$') #verifies string is yyyy-mm-dd format 
+    buildings: BuildingData = BuildingData().from_csv()
+
+
+    @classmethod
+    def from_csv( cls ):
+        df = pd.read_csv( Path('backend/dataset/wifi_counts.csv') )
+        df.timestamp = pd.to_datetime(df.timestamp)
+        return cls( raw_df = df )    
+
+
+    @classmethod
+    def from_snowflake( cls ):
+        pass 
+
+    
+    def get_map( self ):
+        _map = folium_map.Map('wifi')
+        _map.generate_heatmap_timelapse(self.timelapse_structure, self.timestamp_index)
+        return _map
+
+    def _query_data( self, date_str: str ):
+        # get dataframe subset for given date parameter 
+
+        def _validate_input( q: str ):
+            result = re.match( self.date_pattern, q )  # validate string is in format yyyy-mm-dd or yyyy-m-d 
+            if result is None:
+                raise HTTPException( 
+                    status_code = 400, 
+                    detail = "Invalid string format for date. Should be formatted as yyyy-mm-dd" 
+                )
+            else:
+                y_m_d = [ int(x) for x in q.split('-') ]
+                return datetime( year = y_m_d[0], month = y_m_d[1], day = y_m_d[2] )
+         
+
+        date = _validate_input( date_str )
+        query = f"timestamp >= '{date}' and timestamp < '{date + timedelta(1)}'"
+        
+        self.queried_df = self.raw_df.query( query ).copy()
+
+        if len(self.queried_df) == 0:
+            raise HTTPException(
+                status_code = 500,
+                detail = "No data for given date"
+            )
+        
+
+
+    def _format_for_folium( self ):
+
+        if self.queried_df is None:
+            raise HTTPException(
+                status_code = 500,
+                detail = 'No query to format for Folium'
+            )
+
+        # index for folium to loop over
+        self.timestamp_index = [ str(x) for x in pd.to_datetime(self.queried_df.timestamp) ]
+
+        #drop building with nulls from data
+        curr_cols = set( self.queried_df.columns )
+        to_keep = set( self.buildings.buildings_list )
+        to_drop = list( curr_cols.difference(to_keep) )
+        self.queried_df.drop( columns = to_drop, inplace = True )
+
+        # Folium expects values between 0 and 1
+        #min_max_scaler = p.MinMaxScaler()
+        #norm_values = min_max_scaler.fit_transform(self.queried_df.values).tolist()
+        norm_values = p.Normalizer(norm = 'max').transform( self.queried_df.values ).tolist()
+
+        # create data matrix for folium map
+        self.timelapse_structure = []
+        for row in norm_values:
+            new_row = []
+            for idx, col in enumerate( self.queried_df.columns ):
+                curr_coordinate = self.buildings.lat_long_dict[col].copy()
+                curr_coordinate.append( row[idx] )
+                new_row.append( 
+                    curr_coordinate
+                )
+            self.timelapse_structure.append( new_row )
+        
+
+    def __call__( self, date: str ):
+        '''
+            Create call method so FastAPI knows what to do during dependency injection
+            - https://fastapi.tiangolo.com/advanced/advanced-dependencies/ 
+        '''
+        self._query_data( date )
+        self._format_for_folium()
+
+
+    def __hash__(self):
+        # objects need to be hashable for FastAPI dependency cache
+        return hash(repr(self))
+
 
 
 class DataFactory():

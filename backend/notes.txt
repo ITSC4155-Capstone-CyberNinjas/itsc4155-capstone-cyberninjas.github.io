@@ -60,6 +60,9 @@ file storage. Since we will not be persisting any data, only queries, pandas in-
 - Return HTML
 	- https://stackoverflow.com/questions/65296604/how-to-return-a-htmlresponse-with-fastapi
 
+- If going the direction of returning HTML entirely from FastAPI, should probably separate the "page" routers
+from the data routers. So creating a routers sub-directory 
+
 - Examples:
     - https://github.com/testdrivenio/fastapi-celery/tree/master/project 
         - https://testdriven.io/blog/fastapi-and-celery/
