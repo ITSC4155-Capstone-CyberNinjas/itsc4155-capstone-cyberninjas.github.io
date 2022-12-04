@@ -1,17 +1,11 @@
 # data.py
 
 '''
-Script to handle "querying" and tranformation per client request 
-
-Need to set-up transformation logic in a way that expects raw dataframe 
-similar to Snowflake data so that data source can be swapped later 
-
-Task Breakdown:
-    read data from file (possibly could read all on to memory in start-up
-
-Will create an object for the data file that will handle reading data and querying
-
+    This script contains classes for handling WiFi and Transit data as needed. 
+    These classes facilitate queries and tranformations. They are set-up to be 
+    injected as dependencies in the path functions (main.py)
 '''
+
 from pathlib import Path
 from datetime import datetime, timedelta
 from dataclasses import dataclass
@@ -21,49 +15,8 @@ import pandas as pd
 from sklearn import preprocessing as p
 from fastapi import HTTPException
 
-import folium_map
-
-
-@dataclass 
-class BuildingData():
-    
-    raw_df: pd.DataFrame = None 
-    buildings_list: list = None
-    latitudes_list: list = None
-    longitudes_list: list = None
-    lat_long_dict: dict = None
-
-
-    @classmethod
-    def from_csv( cls ):
-        
-        df = pd.read_csv( Path('dataset/buildings.csv') ).dropna() 
-        
-        buildings_list = list( df['Building abbreviation'] )
-        latitudes_list = list( df['Latitude'] )
-        longitudes_list = list( df['Longitude'] )
-        
-        lat_long_dict = { 
-            k:v for k,v in zip( buildings_list, zip( latitudes_list, longitudes_list ) ) 
-        }
-
-        # convert dictionary values to list (instead of tuple)
-        for k in lat_long_dict.keys():
-            lat_long_dict[k] = list( lat_long_dict[k] )
-        
-        return cls(
-            raw_df = df,
-            buildings_list = buildings_list,
-            latitudes_list = latitudes_list,
-            longitudes_list = longitudes_list,
-            lat_long_dict = lat_long_dict
-        )
-
-
-    @classmethod
-    def from_snowflake( cls ):
-        # TODO
-        pass 
+from folium_map import Map
+from buildings import BuildingData
 
 
 @dataclass 
@@ -79,6 +32,11 @@ class WiFiData:
 
     @classmethod
     def from_csv( cls ):
+        '''
+        Read raw data from csv
+        '''
+
+        #TODO: environ variables for local paths
         df = pd.read_csv( Path('backend/dataset/wifi_counts.csv') )
         df.timestamp = pd.to_datetime(df.timestamp)
         return cls( raw_df = df )    
@@ -86,19 +44,33 @@ class WiFiData:
 
     @classmethod
     def from_snowflake( cls ):
+        # TODO: snowflake connector script
         pass 
 
     
     def get_map( self ):
-        _map = folium_map.Map('wifi')
+        '''
+        Get folium.Map instance from folium_map script
+        '''
+
+        _map = Map('wifi')
         _map.generate_heatmap_timelapse(self.timelapse_structure, self.timestamp_index)
+        _map.generate_search_markers()
+        
         return _map
 
+
     def _query_data( self, date_str: str ):
-        # get dataframe subset for given date parameter 
+        '''
+        Given a date (yyyy-mm-dd), query the data for all records within the date
+        '''
 
         def _validate_input( q: str ):
-            result = re.match( self.date_pattern, q )  # validate string is in format yyyy-mm-dd or yyyy-m-d 
+            '''
+            Validate the date string is in correct format (yyyy-mm-dd) and convert to datetime object
+            '''
+
+            result = re.match( self.date_pattern, q )  
             if result is None:
                 raise HTTPException( 
                     status_code = 400, 
@@ -123,6 +95,9 @@ class WiFiData:
 
 
     def _format_for_folium( self ):
+        '''
+        Once data has been queried, perform transformations to match folium specs
+        '''
 
         if self.queried_df is None:
             raise HTTPException(
@@ -140,8 +115,6 @@ class WiFiData:
         self.queried_df.drop( columns = to_drop, inplace = True )
 
         # Folium expects values between 0 and 1
-        #min_max_scaler = p.MinMaxScaler()
-        #norm_values = min_max_scaler.fit_transform(self.queried_df.values).tolist()
         norm_values = p.Normalizer(norm = 'max').transform( self.queried_df.values ).tolist()
 
         # create data matrix for folium map
@@ -159,7 +132,7 @@ class WiFiData:
 
     def __call__( self, date: str ):
         '''
-            Create call method so FastAPI knows what to do during dependency injection
+        Created call method so FastAPI knows what to do during dependency injection
             - https://fastapi.tiangolo.com/advanced/advanced-dependencies/ 
         '''
         self._query_data( date )
@@ -167,7 +140,9 @@ class WiFiData:
 
 
     def __hash__(self):
-        # objects need to be hashable for FastAPI dependency cache
+        '''
+        objects need to be hashable for FastAPI dependency cache
+        '''
         return hash(repr(self))
 
 

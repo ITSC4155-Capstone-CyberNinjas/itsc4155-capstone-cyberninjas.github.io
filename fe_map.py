@@ -39,7 +39,7 @@ HeatMapWithTime(data,
 heat_weight = list(map(list, zip(base_df["Latitude"],
                                  base_df["Longitude"],
                                  base_df["Count"]
-                                 )
+                            )
                        )
                    )
 heat_weight[:5]
@@ -60,7 +60,7 @@ for d in base_df.iterrows():
       },
       "properties": {
         "Name": d[1]["Name"], 
-      }
+      } 
     }
     geo_json["features"].append(temp_dict),
 geojson_obj = folium.GeoJson(geo_json).add_to(OurMap)

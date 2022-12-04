@@ -15,34 +15,38 @@ import pandas as pd
 
 from data import WiFiData
 
+#TODO: environment variables for paths 
 os.chdir( Path('/home/calvin/capstone/itsc4155-capstone-cyberninjas.github.io') )
 
 app = FastAPI()
 
-# TODO
+# TODO: once transit data is implemented, may need a factory
 wifi_data = WiFiData().from_csv()
-
 
 
 @app.get("/")
 async def root():
     #TODO: look into using Jinja2 for handling HTML and returning through FastAPI 
+    pass
 
-    html_content = """
-    """
-    return HTMLResponse(content=html_content, status_code=200)
 
-# should these "get" or "post" methods? 
 @app.get("/wifi/map")
 async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)): 
     '''
-    Dependency Injection will automatically call the "callable" methods of the instance 
-    which will create the subset of data for map and assign to a class variable. 
-    Once the instance is in the path function scope. Another method will be called
-    that will format data for folium and then pass to folium generation script
+    Return HTML for wifi traffic heatmap
 
-    Still need to determine how HTML should be returned. Could write locally to file (current set-up)
-    or need to look into returning HTML from HTTP. (TODO) 
+    Params:
+        date (str): 
+            String representation of date of interest (yyyy-mm-dd)
+
+    Dependencies:
+        wifi_data (WifiData): 
+            Data class for handling queries and operations of wifi data. The "date" 
+            query parameter is passed to the instance to initiate query
+
+    Returns:
+        HTMLResponse: Raw HTML for Heatmap 
+
     '''
 
     wifi_map = wifi_data.get_map()
@@ -54,13 +58,8 @@ async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)):
     return HTMLResponse(content = html_string, status_code = 200)
 
 
-@app.get("/bus/map")
+@app.get("/transit/map")
 async def generate_bus_map():
-    directory = os.getcwd()
-    return {"pwd": directory}
+    #TODO: implement transit data class
+    pass
 
-
-@app.get("/db")
-async def test_db_query():
-    # call db here
-    pass 
