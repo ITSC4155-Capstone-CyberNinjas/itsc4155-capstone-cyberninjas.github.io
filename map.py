@@ -14,7 +14,7 @@ base_df.head()
 OurMap = folium.Map(location=[35.30742034864125, -80.73590951022354], tiles="OpenStreetMap", zoom_start=15, control_scale=True) 
 
 # needed for time lapse
-time_index = list(base_df['Timestamp'].sort_values().astype('str').unique())
+time_index = list(base_df['Timestamp'])
 time_index
 
 base_df['Timestamp'] = base_df['Timestamp'].sort_values(ascending=True)

@@ -7,9 +7,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>WIFI Analyzer - Transportation MAP</title>
+	<title>WIFI Analyzer - Review</title>
 	<link rel="stylesheet" href="css/cyberninjas.css" />
-	<script>"transportationSilver.py"</script>
+	<script src="makeRain.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
@@ -20,14 +21,14 @@
 		<ul>
 			<li><a href="index.html">Home</a></li>
 			<li><a href="wifi.html">WIFI Information</a></li>
-			<li><a href="transportation.html" class="active">Transportation Information</a></li>
-			<li><a href="contact.html">Contact Us</a></li>
+			<li><a href="transportation.html">Transportation Information</a></li>
+			<li><a href="contact.html">About Us/Contact Us</a></li>
 			<li><a href="review.html">Leave a Review</a></li>
 		</ul>
 	</nav>
 
 	<header class="center">
-		<h1>Campus WIFI and Transportation Analyzer</h1>
+		<h1>WIFI CHART</h1>
 		<div class="c">
 
 		</div>
@@ -36,30 +37,23 @@
 
 	<main>
 		<div class="center">
-			<h1>Transportation Information Page</h1>
+			<h1>WIFI CHART INFORMATION</h1>
 			<br>
-			<p>UNCC CAMPUS TRANSPORTATION</p>
+			<p>See Bar Chart Below</p>
 			<br>
-			<p>Campus Transportation Silver Route</p>
-			<br>
+		
+            <div>
+                <p>
+                    <iframe src="wifichartinfo.html" title="Folium Map" width="100%" height="600"></iframe>
+                </p>
+            </div>
+            <!-- back to wifi info page -->
 			<div>
-
-				<div>
-					<p>
-						<iframe src="foliumTransportSilver.html" title="Folium Transportation Silver Route Map"
-							width="100%" height="600"></iframe>
-					</p>
-				</div>
-				<P>
-					<button type="button" onclick="window.location.href ='transportation.html'">Back to Transportation
-						Page</button>
-				</P>
-
-				<br><br><br>
-
+				<P><button type="button" onclick="window.location.href ='wifi.html'">Back to WIFI informationPage</button></P>
+			</div>
 	</main>
 
-	<footer style="position: relative;">
+	<footer>
 		<div class="design">
 			<h3><a href=https://goo.gl/maps/a9zLBdcMqNfRegvd9>Locate Us</a></h3>
 			<p>This app is still in beta and subject to changes.</p>
