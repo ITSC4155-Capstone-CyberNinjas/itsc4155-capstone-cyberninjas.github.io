@@ -30,26 +30,14 @@ async def root():
     pass
 
 
+@app.get("/wifi")
+async def wifi():
+    ''' base wifi page '''
+    pass
+
+
 @app.get("/wifi/map")
 async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)): 
-    '''
-    Return HTML for wifi traffic heatmap
-
-    Params:
-        date (str): 
-            String representation of date of interest (yyyy-mm-dd)
-
-    Dependencies:
-        wifi_data (WifiData): 
-            Data class for handling queries and operations of wifi data. The "date" 
-            query parameter is passed to the instance to initiate query
-
-    Returns:
-        HTMLResponse: Raw HTML for Heatmap 
-
-    '''
-
-    # On WiFiData object, get folium map, write map html to disk, path of file is returned 
     html_path = wifi_data.get_map().write_map()
 
     # Open html file and return 
@@ -58,24 +46,9 @@ async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)):
 
     return HTMLResponse(content = html_string, status_code = 200)
 
+
 @app.get("/wifi/data")
 async def get_wifi_data(date: str = Depends(wifi_data, use_cache = True)):
-    '''
-    Return JSON of count data for given date
-
-    Params:
-        date (str): 
-            String representation of date of interest (yyyy-mm-dd)
-
-    Dependencies:
-        wifi_data (WifiData): 
-            Data class for handling queries and operations of wifi data. The "date" 
-            query parameter is passed to the instance to initiate query
-
-    Returns:
-        Response: JSON representation of data 
-
-    '''
     df = wifi_data.get_data()
     return Response(df.to_json(), media_type="application/json")
 
