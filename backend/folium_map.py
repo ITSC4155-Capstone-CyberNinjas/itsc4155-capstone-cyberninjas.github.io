@@ -78,17 +78,6 @@ class Map:
 			zoom_on_click=True
 		).add_to( search )
 
-	# for loop to iterate trhoug the data frame and create markers
-		for r in self.buildings.raw_df.iterrows():
-			tooltip = (r['Name'])
-			folium.Marker(
-				location=[r['Latitude'], r['Longitude']],
-				tooltip=tooltip,
-				popup=(r['Count'], r'Devices Connected'),
-				icon=folium.Icon(markerColor="green"),
-			).add_to(self.base_map)
-
-
 		Search(
 		    layer=geojson_obj,
 		    search_label="Name",
