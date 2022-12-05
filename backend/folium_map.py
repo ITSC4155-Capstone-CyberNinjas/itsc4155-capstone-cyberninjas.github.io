@@ -79,7 +79,7 @@ class Map:
 		).add_to( search )
 
 	# for loop to iterate trhoug the data frame and create markers
-		for i, r in self.buildings.raw_df.iterrows():
+		for r in self.buildings.raw_df.iterrows():
 			tooltip = (r['Name'])
 			folium.Marker(
 				location=[r['Latitude'], r['Longitude']],
