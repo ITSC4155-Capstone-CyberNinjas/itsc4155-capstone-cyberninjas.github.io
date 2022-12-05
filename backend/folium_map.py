@@ -35,7 +35,7 @@ class Map:
 		HeatMapWithTime( 
 			data, 
 			index = index, 
-			radius = 50
+			radius = 50, 
 		).add_to(self.base_map)
 
 
@@ -77,6 +77,17 @@ class Map:
 			_setup_geojson(), 
 			zoom_on_click=True
 		).add_to( search )
+
+	# for loop to iterate trhoug the data frame and create markers
+		for i, r in self.buildings.raw_df.iterrows():
+			tooltip = (r['Name'])
+			folium.Marker(
+				location=[r['Latitude'], r['Longitude']],
+				tooltip=tooltip,
+				popup=(r['Count'], r'Devices Connected'),
+				icon=folium.Icon(markerColor="green"),
+			).add_to(self.base_map)
+
 
 		Search(
 		    layer=geojson_obj,
