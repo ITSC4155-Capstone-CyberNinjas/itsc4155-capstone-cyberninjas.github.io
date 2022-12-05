@@ -100,6 +100,6 @@ class Map:
 
 	def write_map( self ):
 		# TODO: env var for path 
-		p = Path('itsc4155-capstone-cyberninjas.github.io/wifi_map.html')
+		p = Path('wifi_map.html')
 		self.base_map.save( p )
 		return p
