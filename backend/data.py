@@ -19,6 +19,15 @@ from folium_map import Map
 from buildings import BuildingData
 
 
+def query_check(df):
+    ''' check that queried df exists before doing operations '''
+    if df is None:
+        raise HTTPException(
+            status_code = 500,
+            detail = 'No query to format'
+        )
+
+
 @dataclass 
 class WiFiData:
 
@@ -28,6 +37,7 @@ class WiFiData:
     timestamp_index: list = None # Timestamp index need for folium map timelapse  
     date_pattern: re.Pattern = re.compile(r'^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$') #verifies string is yyyy-mm-dd format 
     buildings: BuildingData = BuildingData().from_csv()
+    curr_date: str = None 
 
 
     @classmethod
@@ -54,10 +64,39 @@ class WiFiData:
         '''
 
         _map = Map('wifi')
-        _map.generate_heatmap_timelapse(self.timelapse_structure, self.timestamp_index)
-        _map.generate_search_markers()
+        _map.create_heatmap_timelapse(self.timelapse_structure, self.timestamp_index)
+        _map.create_search_markers()
         
         return _map
+
+    def get_data( self ):
+        '''
+        Get raw data for given query
+        '''
+
+        query_check(self.queried_df)
+
+        temp_df = self.queried_df.copy()
+        temp_df['timestamp'] = temp_df['timestamp'].apply( lambda x: str(x) )
+        temp_df = temp_df.set_index('timestamp')
+        
+        # pandas dataframes are serializable
+        return temp_df
+
+
+    def write_csv( self ):
+        '''
+        Write csv for given date and return path
+        '''
+        query_check(self.queried_df)
+
+        name = Path(f"wifi_counts_{self.curr_date}.csv")
+        p = Path('/home/calvin/capstone/itsc4155-capstone-cyberninjas.github.io/backend/temp') / name
+        self.queried_df.to_csv(p, index=False)
+
+        return p, name
+
+
 
 
     def _query_data( self, date_str: str ):
@@ -99,29 +138,28 @@ class WiFiData:
         Once data has been queried, perform transformations to match folium specs
         '''
 
-        if self.queried_df is None:
-            raise HTTPException(
-                status_code = 500,
-                detail = 'No query to format for Folium'
-            )
+        query_check(self.queried_df)
+
+        #copy so queried dataframe is not changed
+        temp_df = self.queried_df.copy()
 
         # index for folium to loop over
-        self.timestamp_index = [ str(x) for x in pd.to_datetime(self.queried_df.timestamp) ]
+        self.timestamp_index = [ str(x) for x in pd.to_datetime(temp_df.timestamp) ]
 
         #drop building with nulls from data
-        curr_cols = set( self.queried_df.columns )
+        curr_cols = set( temp_df.columns )
         to_keep = set( self.buildings.buildings_list )
         to_drop = list( curr_cols.difference(to_keep) )
-        self.queried_df.drop( columns = to_drop, inplace = True )
+        temp_df.drop( columns = to_drop, inplace = True )
 
         # Folium expects values between 0 and 1
-        norm_values = p.Normalizer(norm = 'max').transform( self.queried_df.values ).tolist()
+        norm_values = p.MinMaxScaler().fit_transform( temp_df.values ).tolist()
 
         # create data matrix for folium map
         self.timelapse_structure = []
         for row in norm_values:
             new_row = []
-            for idx, col in enumerate( self.queried_df.columns ):
+            for idx, col in enumerate( temp_df.columns ):
                 curr_coordinate = self.buildings.lat_long_dict[col].copy()
                 curr_coordinate.append( row[idx] )
                 new_row.append( 
@@ -135,6 +173,7 @@ class WiFiData:
         Created call method so FastAPI knows what to do during dependency injection
             - https://fastapi.tiangolo.com/advanced/advanced-dependencies/ 
         '''
+        self.curr_date = date
         self._query_data( date )
         self._format_for_folium()
 
@@ -146,6 +185,9 @@ class WiFiData:
         return hash(repr(self))
 
 
+@dataclass
+class TransitData:
+    pass
 
 class DataFactory():
     # TODO: will revisit if this is needed in implementation

@@ -10,7 +10,7 @@ from pathlib import Path
 import os
 
 from fastapi import Depends, FastAPI 
-from fastapi.responses import HTMLResponse
+from fastapi.responses import Response, HTMLResponse, FileResponse
 import pandas as pd 
 
 from data import WiFiData
@@ -49,17 +49,52 @@ async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)):
 
     '''
 
-    wifi_map = wifi_data.get_map()
-    html_path = wifi_map.write_map()
+    # On WiFiData object, get folium map, write map html to disk, path of file is returned 
+    html_path = wifi_data.get_map().write_map()
 
+    # Open html file and return 
     with open(html_path, 'r') as f:
         html_string = f.read()
 
     return HTMLResponse(content = html_string, status_code = 200)
 
+@app.get("/wifi/data")
+async def get_wifi_data(date: str = Depends(wifi_data, use_cache = True)):
+    '''
+    Return JSON of count data for given date
+
+    Params:
+        date (str): 
+            String representation of date of interest (yyyy-mm-dd)
+
+    Dependencies:
+        wifi_data (WifiData): 
+            Data class for handling queries and operations of wifi data. The "date" 
+            query parameter is passed to the instance to initiate query
+
+    Returns:
+        Response: JSON representation of data 
+
+    '''
+    df = wifi_data.get_data()
+    return Response(df.to_json(), media_type="application/json")
+
+
+@app.get("/wifi/table")
+async def get_wifi_table(date: str = Depends(wifi_data, use_cache = True)):
+    df = wifi_data.get_data()
+    return HTMLResponse(content=df.to_html(), status_code=200)
+
+
+@app.get("/wifi/csv")
+async def get_wifi_csv(date: str = Depends(wifi_data, use_cache = True)):
+    file_path, name = wifi_data.write_csv()
+    print( file_path, name )
+    return FileResponse(path=file_path, filename=str(name))
+
 
 @app.get("/transit/map")
-async def generate_bus_map():
+async def generate_transit_map():
     #TODO: implement transit data class
-    pass
+    pass    
 

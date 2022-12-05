@@ -1,4 +1,4 @@
-# map.py
+# folium_map.py
 
 '''
 	Script for handling folium map generation 
@@ -28,7 +28,7 @@ class Map:
 		self.buildings = BuildingData().from_csv()
 
 
-	def generate_heatmap_timelapse( self, data: list, index: list ):
+	def create_heatmap_timelapse( self, data: list, index: list ):
 		'''
 			Create heatmap with timelapse using folium plug-in
 		'''
@@ -39,7 +39,10 @@ class Map:
 		).add_to(self.base_map)
 
 
-	def generate_search_markers( self ):
+	def create_search_markers( self ):
+		#TODO: parameterize this per map_type (wifi vs transit have different search items)
+
+
 		'''
 			Add "building search" function to the heatmap using folium plug-in
 		'''
