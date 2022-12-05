@@ -16,7 +16,7 @@ import pandas as pd
 from data import WiFiData
 
 #TODO: environment variables for paths 
-os.chdir( Path('/home/calvin/capstone/itsc4155-capstone-cyberninjas.github.io') )
+#os.chdir( Path('/itsc4155-capstone-cyberninjas.github.io') )
 
 app = FastAPI()
 

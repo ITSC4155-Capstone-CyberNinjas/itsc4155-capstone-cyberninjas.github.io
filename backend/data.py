@@ -47,7 +47,7 @@ class WiFiData:
         '''
 
         #TODO: environ variables for local paths
-        df = pd.read_csv( Path('backend/dataset/wifi_counts.csv') )
+        df = pd.read_csv( Path('dataset/wifi_counts.csv') )
         df.timestamp = pd.to_datetime(df.timestamp)
         return cls( raw_df = df )    
 
@@ -91,7 +91,7 @@ class WiFiData:
         query_check(self.queried_df)
 
         name = Path(f"wifi_counts_{self.curr_date}.csv")
-        p = Path('/home/calvin/capstone/itsc4155-capstone-cyberninjas.github.io/backend/temp') / name
+        p = Path('/temp') / name
         self.queried_df.to_csv(p, index=False)
 
         return p, name

@@ -24,7 +24,7 @@ class BuildingData():
     def from_csv( cls ):
         
         #TODO: env variabales for paths
-        df = pd.read_csv( Path('/home/calvin/capstone/itsc4155-capstone-cyberninjas.github.io/backend/dataset/buildings.csv') ).dropna() 
+        df = pd.read_csv( Path('dataset/buildings.csv') ).dropna() 
         
         buildings_list = list( df['Building abbreviation'] )
         latitudes_list = list( df['Latitude'] )
