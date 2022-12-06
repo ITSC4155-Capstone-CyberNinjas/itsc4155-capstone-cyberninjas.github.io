@@ -35,7 +35,7 @@ class Map:
 		HeatMapWithTime( 
 			data, 
 			index = index, 
-			radius = 50
+			radius = 50, 
 		).add_to(self.base_map)
 
 
