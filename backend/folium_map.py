@@ -96,6 +96,11 @@ class Map:
 		Return folium.Map object
 		'''
 		return self.base_map
+
+
+	def get_html( self ):
+		# timelapse does not work through this method
+		return self.base_map._repr_html_()
 	
 
 	def write_map( self ):

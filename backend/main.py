@@ -38,6 +38,7 @@ async def wifi():
 
 @app.get("/wifi/map")
 async def generate_wifi_map(date: str = Depends(wifi_data, use_cache=True)): 
+    
     html_path = wifi_data.get_map().write_map()
 
     # Open html file and return 
@@ -62,7 +63,6 @@ async def get_wifi_table(date: str = Depends(wifi_data, use_cache = True)):
 @app.get("/wifi/csv")
 async def get_wifi_csv(date: str = Depends(wifi_data, use_cache = True)):
     file_path, name = wifi_data.write_csv()
-    print( file_path, name )
     return FileResponse(path=file_path, filename=str(name))
 
 

@@ -12,7 +12,7 @@ from dataclasses import dataclass
 import re 
 
 import pandas as pd
-from sklearn import preprocessing as p
+import numpy as np
 from fastapi import HTTPException
 
 from folium_map import Map
@@ -26,6 +26,12 @@ def query_check(df):
             status_code = 500,
             detail = 'No query to format'
         )
+
+
+def minmaxscale(X: np.ndarray):
+    ''' scale values between 0 and 1 '''
+    X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+    return X_std
 
 
 @dataclass 
@@ -97,8 +103,6 @@ class WiFiData:
         return p, name
 
 
-
-
     def _query_data( self, date_str: str ):
         '''
         Given a date (yyyy-mm-dd), query the data for all records within the date
@@ -153,7 +157,7 @@ class WiFiData:
         temp_df.drop( columns = to_drop, inplace = True )
 
         # Folium expects values between 0 and 1
-        norm_values = p.MinMaxScaler().fit_transform( temp_df.values ).tolist()
+        norm_values = minmaxscale(temp_df.values).tolist()
 
         # create data matrix for folium map
         self.timelapse_structure = []
