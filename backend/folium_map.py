@@ -36,6 +36,7 @@ class Map:
 			data, 
 			index = index, 
 			radius = 50, 
+			use_local_extrema = False
 		).add_to(self.base_map)
 
 
